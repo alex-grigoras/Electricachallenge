@@ -8,6 +8,8 @@ using System.Threading;
 
 class Solution
 {
+    //this implementation for minheap I got from here: http://codereview.stackexchange.com/questions/68530/minheap-implementation
+    //I fixed the bug mentioned in the answers, the one about the value comparrison (see method  Heapify)
     class MinHeap<T> where T : IComparable
     {
         List<T> elements;
@@ -57,7 +59,7 @@ class Solution
                 int parentPosition = (i + 1) / 2 - 1;
                 parentPosition = parentPosition >= 0 ? parentPosition : 0;
 
-                if (elements[parentPosition].CompareTo(elements[i]) > 0)
+                if (elements[parentPosition].CompareTo(elements[i]) > 0) //fixed this; it used to be ".....> 1"
                 {
                     T tmp = elements[parentPosition];
                     elements[parentPosition] = elements[i];
